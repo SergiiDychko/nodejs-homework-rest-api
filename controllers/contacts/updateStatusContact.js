@@ -11,4 +11,4 @@ const updateStatusContact = async (req, res) => {
   res.status(201).json(data);
 };
 
-module.exports = updateStatusContact;
+module.exports = updateStatusContact; 
