@@ -1,7 +1,7 @@
 const express = require("express");
 const controllers = require("../../controllers/contacts");
 const { ctrlWrapper, validateBody } = require('../../helpers');
-const schemas = require('../../schemas/contactSchema')
+const schemas = require('../../models/contact')
 
 const router = express.Router();
 
