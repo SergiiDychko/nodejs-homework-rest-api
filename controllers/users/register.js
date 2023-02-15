@@ -4,10 +4,10 @@ const { requestError } = require('../../helpers');
 
 const register = async (req, res) => {
     const { name, email, password } = req.body;
-    console.log(name, email, password);
     const user = await User.findOne({ email });
     if (user) throw requestError(409, 'Email in use');
-    const result = await User.create({ name, email, password });
+    const hashPassword = await bcrypt.hash(password, 10);
+    const result = await User.create({ name, email, password: hashPassword });
     res.status(201).json({
       user: {
         email,
