@@ -1,12 +1,17 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
-const emailRegexp = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
+const emailRegexp = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Set your name'],
+    },
     password: {
-			type: String,
-			minlength: 6,
+      type: String,
+      minlength: 6,
       required: [true, 'Set password for user'],
     },
     email: {
