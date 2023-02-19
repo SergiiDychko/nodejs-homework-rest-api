@@ -1,7 +1,7 @@
 const express = require('express');
 const controllers = require('../../controllers/users');
 const { ctrlWrapper } = require('../../helpers');
-const { validateBody, authenticate } = require('../../middlewares');
+const { validateBody, authenticate, upload } = require('../../middlewares');
 const {schemas} = require('../../models/user');
 
 const router = express.Router();
@@ -13,5 +13,10 @@ router.post('/login', validateBody(schemas.loginSchema), ctrlWrapper(controllers
 router.get('/logout', authenticate, ctrlWrapper(controllers.logout));
 
 router.get('/current', authenticate, ctrlWrapper(controllers.current));
+
+router.post('/avatars', authenticate, upload.single('avatar'), async (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
+});
 
 module.exports = router;
