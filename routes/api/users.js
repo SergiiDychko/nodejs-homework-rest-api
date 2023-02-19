@@ -14,9 +14,7 @@ router.get('/logout', authenticate, ctrlWrapper(controllers.logout));
 
 router.get('/current', authenticate, ctrlWrapper(controllers.current));
 
-router.post('/avatars', authenticate, upload.single('avatar'), async (req, res) => {
-    console.log(req.body);
-    console.log(req.file);
-});
+router.post('/avatars', authenticate, upload.single('avatar'), ctrlWrapper(controllers.avatar)
+);
 
 module.exports = router;
