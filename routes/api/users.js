@@ -14,7 +14,11 @@ router.get('/logout', authenticate, ctrlWrapper(controllers.logout));
 
 router.get('/current', authenticate, ctrlWrapper(controllers.current));
 
-router.post('/avatars', authenticate, upload.single('avatar'), ctrlWrapper(controllers.avatar)
+router.post(
+  '/avatars',
+  authenticate,
+  upload.single('avatar'),
+  ctrlWrapper(controllers.updAvatar)
 );
 
 module.exports = router;

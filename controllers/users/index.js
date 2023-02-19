@@ -1,11 +1,11 @@
 const register = require('./register');
 const login = require('./login');
 const current = require('./current');
-const avatar = require('./avatar');
+const updAvatar = require('./updAvatar');
 
 module.exports = {
   register,
   login,
   current,
-  avatar,
+  updAvatar,
 };
