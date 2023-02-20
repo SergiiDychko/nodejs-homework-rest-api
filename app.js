@@ -2,9 +2,6 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-const multer = require('multer');
-const path = require('path');
-
 require('dotenv').config()
 
 const usersRouter = require('./routes/api/users');
