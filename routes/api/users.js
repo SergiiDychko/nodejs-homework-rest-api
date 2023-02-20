@@ -29,6 +29,8 @@ router.post(
   ctrlWrapper(controllers.updAvatar)
 );
 
-router.get('/verify:verificationToken', ctrlWrapper(controllers.verifyEmail) );
+router.get('/verify:verificationToken', ctrlWrapper(controllers.verifyEmail));
+
+router.post('/verify/', ctrlWrapper(controllers.resendVerifyEmail));
 
 module.exports = router;

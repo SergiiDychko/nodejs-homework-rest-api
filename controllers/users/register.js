@@ -4,9 +4,8 @@ const { v4: uuidv4 } = require('uuid');
 const { User } = require('../../models/user');
 const { requestError, sendEmail } = require('../../helpers');
 
-// адреса сервера для вставки посилання верифікації email-адреси.
-const siteAdress = 'http://localhost:3000/api';
-
+require('dotenv').config();
+const { BASE_URL } = process.env;
 
 const register = async (req, res) => {
   const { email, password } = req.body;
@@ -26,7 +25,7 @@ const register = async (req, res) => {
   const mailData = {
     to: email,
     subject: 'Confirm your registration',
-    html: `<h1>Confirm Your Email</h1><p>You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.</p><p>If you did not register with us, please disregard this email.</p><a target="_blank" href="${siteAdress}/users/verify/${verificationToken}">CONFIRM YOUR EMAIL</a>`,
+    html: `<h1>Confirm Your Email</h1><p>You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.</p><p>If you did not register with us, please disregard this email.</p><a target="_blank" href="${BASE_URL}/api/users/verify/${verificationToken}">CONFIRM YOUR EMAIL</a>`,
   };
 await sendEmail(mailData);
 
